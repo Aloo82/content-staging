@@ -81,8 +81,8 @@ class Post_Table extends WP_List_Table {
 
 		if ($post->get_type() == 'nav_menu_item' && empty($post->get_title())) {
 			$actual_post = get_post(get_post_meta($post->get_id(), '_menu_item_object_id', true));
-			$post_title = $actual_post->post_title;
-			$post_id = $actual_post->ID;
+			$post_title = $actual_post instanceof \WP_Post ? $actual_post->post_title : $post->get_title();
+			$post_id = $actual_post instanceof \WP_Post ? $actual_post->ID : $post->get_id();
 		} else {
 			$post_title = $post->get_title();
 			$post_id = $post->get_id();
