@@ -104,7 +104,7 @@ class Setup {
 		$singular = $obj->labels->singular_name;
 
 		foreach ( $messages[$post_type] as $key => $message ) {
-			if (isset($_GET['post'])) {
+			if (isset($_GET['post']) && current_user_can('manage_options')) {
 				$messages[$post_type][$key] = $message . ' or <a href="' . admin_url( 'admin-post.php?action=sme-quick-deploy-batch&post_id=' . $_GET['post'] ) . '">Deploy To Production</a>';
 			}
 		}
