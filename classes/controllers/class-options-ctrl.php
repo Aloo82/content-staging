@@ -122,7 +122,7 @@ class Options_Ctrl {
 		$options = wp_load_alloptions();
 
 		// Filter to add custom options (non autoloaded options)
-		$options = apply_filter( 'sme_get_options', $options );
+		$options = apply_filters( 'sme_get_options', $options );
 
 		if ( $use_whitelist ) {
 			return $this->get_whitelist( $options );
