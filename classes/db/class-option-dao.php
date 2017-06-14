@@ -89,7 +89,7 @@ class Option_DAO extends DAO {
 	public function insert_options( array $options ) {
 		foreach ( $options as $option ) {
 			if ( $option instanceof Option ) {
-				update_option( $option->get_name(), $option->get_value(), $option->get_autoload() );
+				update_option( $option->get_name(), maybe_unserialize( $option->get_value() ), $option->get_autoload() );
 			}
 		}
 	}

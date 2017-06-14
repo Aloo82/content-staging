@@ -121,6 +121,9 @@ class Options_Ctrl {
 		// Load all options available for this blog.
 		$options = wp_load_alloptions();
 
+		// Filter to add custom options (non autoloaded options)
+		$options = apply_filters( 'sme_get_options', $options );
+
 		if ( $use_whitelist ) {
 			return $this->get_whitelist( $options );
 		}
